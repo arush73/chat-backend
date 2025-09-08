@@ -542,4 +542,5 @@ export {
   removeParticipantFromGroupChat,
   addNewParticipantInGroupChat,
   getAllChats,
+  getGroupChatDetails
 }

@@ -1,10 +1,11 @@
 import { asyncHandler } from "../utils/asyncHandler.js"
 import { ApiError } from "../utils/ApiError.js"
-import { ApiResponse, ApResponse } from "../utils/ApiResponse.js"
+import { ApiResponse } from "../utils/ApiResponse.js"
 import ChatMessage from "../models/message.models.js"
 import Chat from "../models/chat.models.js"
 import mongoose from "mongoose"
 import { ChatEventEnum } from "../constants.js"
+import {emitSocketEvent} from "../socket/index.js"
 
 const chatMessageCommonAggregation = () => {
   return [

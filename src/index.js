@@ -5,11 +5,12 @@ import connectDB from "./utils/db.js"
 import logger from "./logger/winston.logger.js"
 import app from "./app.js"
 import http from "http"
-import {Server} from "socket.io"
+import { Server } from "socket.io"
+import { initializeSocketIO } from "./socket/index.js"
 
 const server = http.createServer(app)
 
-const io = new Server(httpServer, {
+const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     origin: process.env.CORS_ORIGIN,
@@ -17,11 +18,13 @@ const io = new Server(httpServer, {
   },
 })
 
-app.use("io", io)
+app.set("io", io)
 
 io.on("connection", (socket) => {
   console.log("web socket is connected: ", socket.id)
 })
+
+initializeSocketIO(io)
 
 const startServer = () => {
   server.listen(process.env.PORT || 8080, () => {

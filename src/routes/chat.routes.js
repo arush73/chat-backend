@@ -8,7 +8,7 @@ import {
   getAllChats,
   searchAvailableUsers,
   createOrGetAOneOnOneChat,
-  createGroupChat,
+  createAGroupChat,
   getGroupChatDetails,
   renameGroupChat,
   deleteGroupChat,
@@ -24,7 +24,7 @@ router.route("/users").get(searchAvailableUsers)
 
 router.route("/c/:receiverId").post(createOrGetAOneOnOneChat)
 
-router.route("/group").post(createGroupChat)
+router.route("/group").post(createAGroupChat)
 
 router
   .route("/group/:chatId")

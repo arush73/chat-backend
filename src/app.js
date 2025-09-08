@@ -7,6 +7,7 @@ import cors from "cors"
 import morganMiddleware from "./logger/morgan.logger.js"
 import session from "express-session"
 import passport from "passport"
+import { initializeSocketIO } from "./socket/index.js"
 
 const app = express()
 console.log(process.env.EXPRESS_SESSION_SECRET)
@@ -62,7 +63,7 @@ import messageRouter from "./routes/message.routes.js"
 
 // decalring routes
 app.use("/api/v1/healthcheck", healthcheckRouter)
-app.use("/api/v1/auth", authRouter)
+app.use("/api/v1/users", authRouter)
 app.use("/api/v1/chats", chatRouter)
 app.use("/api/v1/messages", messageRouter)
 

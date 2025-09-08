@@ -5,11 +5,15 @@ import { upload } from "../middlewares/multer.middleware.js"
 const router = Router()
 router.use(verifyJWT)
 
-import {} from "../controllers/message.controllers.js"
+import {
+  getAllMessages,
+  sendMessage,
+  deleteMessage,
+} from "../controllers/message.controllers.js"
 
 router
   .route("/:chatId")
-  .get(getAllMessage)
+  .get(getAllMessages)
   .post(
     upload.fields([
       {

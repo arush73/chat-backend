@@ -21,11 +21,13 @@ const chatSchema = new mongoose.Schema(
       },
     ],
     admin: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
   },
   { timestamps: true }
 )
 
-export const Chat = mongoose.model("Chat", chatSchema)
+const Chat = mongoose.model("Chat", chatSchema)
+
+export default Chat
